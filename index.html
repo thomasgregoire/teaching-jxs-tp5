@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
@@ -7,24 +8,37 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" />
 
 </head>
+
 <body ng-app="pokedex">
 
-	<div class="container">
-		<h1>Pokésir</h1>
+    <div class="container">
+        <h1>Pokésir</h1>
 
-		<!-- Search -->
-		<div>
-            <label for="idpok">Numéro Pokémon</label> <input id="idpok" type="text" ng-model="idpokemon">
-        <br>
-            <label for="nompok">Nom Pokémon</label> <input id="nompok" type="text" ng-model="nompokemon">
+        <!-- Search -->
+        <div ng-app="pokeApp" ng-controller="pokedexController">
+            <label class="col-md-2" for="idpok">Numéro Pokémon</label> <input id="idpok" type="text" ng-model="idpokemon">
+            <br>
+            <label class="col-md-2" for="nompok">Nom Pokémon</label> <input id="nompok" type="text" ng-model="nompokemon">
+            <br>
+            <br>
+
+            <p>
+                <select class="col-md-push-1 col-md-2" ng-model="nompokemon">
+                <option ng-repeat="name in pokes | filter:nompokemon">{{name}}</option>
+            </select>
+            </p>
+            <br>
+            <button type="button" class="btn btn-primary" ng-click="nompokemonrech = nompokemon">Go</button>
+            <!-- Pokémon information -->
+            <br>
+            <div>Pokémon recherché : {{nompokemonrech}}</div>
         </div>
 
-    
 
-		<!-- Pokémon information -->
-		<div>{{idpokemon}}</div>
 
-	</div>
+
+
+    </div>
 
     <!-- Dependencies -->
     <script src="js/jquery.min.js"></script>
@@ -37,4 +51,5 @@
 
 
 </body>
+
 </html>
